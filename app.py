@@ -3,19 +3,10 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 
-# ================================
-# Load trained model
-# ================================
 model = joblib.load("Tourist_safety_model.joblib")
 
-# ================================
-# FastAPI app
-# ================================
 app = FastAPI()
 
-# ================================
-# Input data model
-# ================================
 class TouristData(BaseModel):
     time_in_red_zone_min: float
     time_near_red_zone_min: float
@@ -23,9 +14,6 @@ class TouristData(BaseModel):
     last_update_gap_min: float
     deviation_km: float
 
-# ================================
-# Predict endpoint
-# ================================
 @app.post("/predict")
 def predict_safety(data: TouristData):
     # Convert input to numpy array
