@@ -42,7 +42,7 @@ print(f"Root Mean Squared Error: {rmse:.2f}")
 print(f"R² Score: {r2:.2f}")
 
 importances = pd.Series(model.feature_importances_, index=X.columns)
-print("\n🔑 Feature Importances (Monotonic):")
+print("\n Feature Importances (Monotonic):")
 print(importances.sort_values(ascending=False))
 
 
